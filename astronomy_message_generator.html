@@ -1,0 +1,130 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astronomy Message Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #0a0a0a;
+            color: #ffffff;
+            background-image: 
+                radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
+                radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
+                radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px);
+            background-size: 550px 550px, 350px 350px, 250px 250px;
+            background-position: 0 0, 40px 60px, 130px 270px;
+        }
+        .container {
+            background-color: rgba(25, 25, 112, 0.8);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 100, 200, 0.3);
+            text-align: center;
+        }
+        h1 {
+            color: #87ceeb;
+            margin-bottom: 30px;
+        }
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #4169e1;
+            border-radius: 5px;
+            margin: 10px;
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+        button {
+            padding: 12px 24px;
+            font-size: 16px;
+            background-color: #4169e1;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        button:hover {
+            background-color: #6495ed;
+        }
+        #message {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            font-size: 18px;
+            line-height: 1.5;
+            border: 2px solid #87ceeb;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌟 Astronomy Message Generator 🌟</h1>
+        
+        <div>
+            <input type="text" id="nameInput" placeholder="Enter your name" />
+            <br>
+            <button onclick="generateMessage()">Get My Astronomy Message</button>
+        </div>
+        
+        <div id="message" class="hidden"></div>
+    </div>
+
+    <script>
+        const astronomyMessages = [
+            "The Milky Way galaxy contains over 100 billion stars!",
+            "A day on Venus is longer than its year.",
+            "Saturn's moon Titan has lakes of liquid methane.",
+            "Neutron stars can spin 600 times per second.",
+            "Jupiter has at least 95 known moons.",
+            "The closest star to Earth is 4.24 light-years away.",
+            "Black holes can bend time and space around them.",
+            "The Sun converts 4 million tons of matter into energy every second.",
+            "Mars has the largest volcano in the solar system - Olympus Mons.",
+            "The observable universe is about 93 billion light-years across.",
+            "One teaspoon of neutron star material would weigh 6 billion tons on Earth.",
+            "The Moon is slowly moving away from Earth at 3.8 cm per year.",
+            "Uranus rotates on its side, possibly due to an ancient collision.",
+            "The Andromeda Galaxy is approaching us at 250,000 mph.",
+            "There are more stars in the universe than grains of sand on all Earth's beaches.",
+            "A solar eclipse can last up to 7 minutes and 31 seconds.",
+            "The coldest place in the universe is the Boötes Void at -454°F.",
+            "Enceladus, Saturn's moon, has geysers of water shooting from its surface.",
+            "The Great Red Spot on Jupiter is a storm larger than Earth.",
+            "Light from the Sun takes 8 minutes and 20 seconds to reach Earth."
+        ];
+
+        function generateMessage() {
+            const nameInput = document.getElementById('nameInput');
+            const messageDiv = document.getElementById('message');
+            const name = nameInput.value.trim();
+            
+            if (name === '') {
+                alert('Please enter your name!');
+                return;
+            }
+            
+            const randomIndex = Math.floor(Math.random() * astronomyMessages.length);
+            const randomMessage = astronomyMessages[randomIndex];
+            
+            messageDiv.innerHTML = `Hello <strong>${name}</strong>, today's astronomy message is:<br><br><em>"${randomMessage}"</em>`;
+            messageDiv.classList.remove('hidden');
+        }
+
+        // Allow Enter key to trigger the button
+        document.getElementById('nameInput').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                generateMessage();
+            }
+        });
+    </script>
+</body>
+</html>
